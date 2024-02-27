@@ -21,4 +21,17 @@ def book(request):
     context = {'form':form}
     return render(request, 'book.html', context)
 
+def menu(request):
+    menu_data = Menu.objects.all()
+    context = {'menu':menu_data}
+    return render(request, 'menu.html', context)
+
+def display_menu_items(request, pk):
+    if pk:
+        menu_item = Menu.objects.get(id=pk)
+    else: 
+        menu_item = ""
+    context = {'menu_item':menu_item}
+    return render(request, 'menu_item.html', context)
+
 # Add your code here to create new views
